@@ -88,325 +88,88 @@
 
   <main class="main">
 
-   <!-- Hero Section -->
-<section id="hero" class="hero section">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
 
-  <img src="assets/img/hero-img.png" alt="" data-aos="fade-in">
+      <img src="assets/img/WhatsApp Image 2025-05-26 at 15.17.00.jpeg" alt="" data-aos="fade-in">
 
-  <!-- Animated background elements -->
-  <div class="floating-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-    <div class="shape shape-4"></div>
-    <div class="shape shape-5"></div>
-  </div>
+      <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-white" style="color: #fff;">
+            <div id="animated-title" style="display: flex; align-items: center; justify-content: center;">
+              <span id="typed-text" style="font-size: 3rem; font-weight: bold; color: #fff; white-space: pre;"></span>
+              <span id="pen-icon" style="margin-left: 8px; font-size: 3rem; color: #fff;">
+              <i class="bi bi-pen"></i>
+              </span>
+            </div>
+            <script>
+              // Words to animate
+              const words = ["Dyllun", "Digital"];
+              const typedText = document.getElementById('typed-text');
+              const penIcon = document.getElementById('pen-icon');
+              let wordIndex = 0;
+              let charIndex = 0;
+              let isErasing = false;
 
-  <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
-    <div class="row justify-content-center">
-        <div class="col-lg-8 text-white" style="color: #fff;">
-                <div id="animated-title" style="display: flex; align-items: center; justify-content: center;">
-          <div style="text-align: center;">
-            <span id="typed-text" style="font-size: 3rem; font-weight: bold; color: #fff; white-space: pre; display: inline-block;"></span>
-            <span id="pen-icon" style="margin-left: 8px; font-size: 3rem; color: #fff;" class="pen-bounce">
-            <i class="bi bi-pen"></i>
-            </span>
-          </div>
+              function typeWord() {
+              if (charIndex < words[wordIndex].length) {
+                typedText.textContent += words[wordIndex][charIndex];
+                charIndex++;
+                penIcon.style.visibility = 'visible';
+                setTimeout(typeWord, 120);
+              } else {
+                // Check if we're on the last word
+                if (wordIndex === words.length - 1) {
+                  // Keep pen visible after completing "Digital"
+                  penIcon.style.visibility = 'visible';
+                  // Optional: restart animation after a longer pause
+                  setTimeout(() => {
+                    typedText.textContent = '';
+                    wordIndex = 0;
+                    charIndex = 0;
+                    penIcon.style.visibility = 'visible';
+                    setTimeout(typeWord, 400);
+                  }, 5000);
+                } else {
+                  // Hide pen briefly between words
+                  penIcon.style.visibility = 'hidden';
+                  setTimeout(() => {
+                    wordIndex++;
+                    typedText.textContent += ' ';
+                    charIndex = 0;
+                    penIcon.style.visibility = 'visible';
+                    setTimeout(typeWord, 400);
+                  }, 400);
+                }
+              }
+              }
+
+              // Start animation on DOM ready
+              document.addEventListener('DOMContentLoaded', typeWord);
+            </script>
+           
+            <p style="color: #fff;">Hello founder! 👋 <br>Glad you took the decision to grow your personal brand</p>
+            <div class="hero-buttons mt-4">
+              <a href="about.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">About Me</a>
+              <a href="services.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">Our Services</a>
+              <a href="portfolio.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">Portfolio</a>
+              <a href="contact.html" class="btn-book-now" style="color: #fff; background-color: rgba(255,255,255,0.2); border-color: #fff; padding: 12px 28px; font-size: 1.1rem; font-weight: bold; transition: all 0.3s ease;">Book Now</a>
+            </div>
+
+            <style>
+              .btn-book-now:hover {
+                background-color: rgba(255,255,255,0.3) !important;
+                transform: scale(1.05);
+              }
+              .btn-book-now:active {
+                transform: scale(0.95);
+              }
+            </style></div>
+            </div>
         </div>
-        <script>
-          // Typing animation for the main title
-          const text = "Dyllun Digital Agency";
-          const typedTextElement = document.getElementById("typed-text");
-          let index = 0;
-          
-          function typeWriter() {
-            if (index < text.length) {
-              const char = text.charAt(index);
-              
-              // Check if we're on mobile and about to type "Agency"
-              if (window.innerWidth <= 768 && index === 15) { // Position before "Agency"
-                typedTextElement.innerHTML += '<br>';
-              }
-              
-              typedTextElement.textContent += char;
-              index++;
-              setTimeout(typeWriter, 100);
-            }
-          }
-          
-          // Handle responsive text layout
-          function handleResponsiveText() {
-            const currentText = typedTextElement.textContent || typedTextElement.innerText;
-            if (window.innerWidth <= 768) {
-              // On mobile, break after "Digital"
-              if (currentText === "Dyllun Digital Agency") {
-                typedTextElement.innerHTML = "Dyllun Digital<br>Agency";
-              }
-            } else {
-              // On desktop, keep on one line
-              if (currentText.includes('\n') || typedTextElement.innerHTML.includes('<br>')) {
-                typedTextElement.textContent = "Dyllun Digital Agency";
-              }
-            }
-          }
-          
-          // Start typing animation when page loads
-          window.addEventListener('load', function() {
-            setTimeout(typeWriter, 500);
-          });
-          
-          // Handle window resize
-          window.addEventListener('resize', handleResponsiveText);
-        </script>
-        <style>
-                      /* Responsive text adjustments */
-            @media (max-width: 768px) {
-              #typed-text {
-                font-size: 2.5rem !important;
-                line-height: 1.2;
-              }
-              
-              #animated-title {
-                flex-direction: column !important;
-              }
-              
-              .shape {
-                display: none;
-              }
-              
-              .btn-animated {
-                margin: 5px;
-                display: block;
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-              }
-            }
-            
-            @media (max-width: 480px) {
-              #typed-text {
-                font-size: 2rem !important;
-              }
-            }
-        </style>
-        <p style="color: #fff;" class="subtitle-fade-in">We Are Professional Social Media Managing Agency</p>
-        <div class="buttons-container mt-4" data-aos="fade-up" data-aos-delay="200">
-          <style>
-            /* Floating background shapes */
-            .floating-shapes {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              overflow: hidden;
-              z-index: -1;
-            }
-            
-            .shape {
-              position: absolute;
-              border-radius: 50%;
-              background: rgba(255, 255, 255, 0.1);
-              animation: float 6s ease-in-out infinite;
-            }
-            
-            .shape-1 {
-              width: 80px;
-              height: 80px;
-              top: 20%;
-              left: 10%;
-              animation-delay: 0s;
-            }
-            
-            .shape-2 {
-              width: 120px;
-              height: 120px;
-              top: 60%;
-              right: 15%;
-              animation-delay: 2s;
-              background: rgba(255, 255, 255, 0.05);
-            }
-            
-            .shape-3 {
-              width: 60px;
-              height: 60px;
-              top: 30%;
-              right: 25%;
-              animation-delay: 4s;
-            }
-            
-            .shape-4 {
-              width: 100px;
-              height: 100px;
-              bottom: 20%;
-              left: 20%;
-              animation-delay: 1s;
-              background: rgba(255, 255, 255, 0.08);
-            }
-            
-            .shape-5 {
-              width: 40px;
-              height: 40px;
-              top: 70%;
-              left: 50%;
-              animation-delay: 3s;
-            }
-            
-            @keyframes float {
-              0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-              }
-              50% {
-                transform: translateY(-20px) rotate(180deg);
-              }
-            }
+      </div>
 
-            /* Pen bounce animation */
-            .pen-bounce {
-              animation: penBounce 2s infinite;
-            }
-            
-            @keyframes penBounce {
-              0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-              }
-              40% {
-                transform: translateY(-10px);
-              }
-              60% {
-                transform: translateY(-5px);
-              }
-            }
-
-            /* Subtitle fade in animation */
-            .subtitle-fade-in {
-              opacity: 0;
-              animation: fadeInUp 1s ease-out 2s forwards;
-            }
-            
-            @keyframes fadeInUp {
-              from {
-                opacity: 0;
-                transform: translateY(30px);
-              }
-              to {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-
-            /* Enhanced button animations */
-            .btn-animated {
-              position: relative;
-              overflow: hidden;
-              transition: all 0.3s ease;
-              margin-bottom: 10px;
-              display: inline-block;
-              transform: translateY(50px);
-              opacity: 0;
-              animation: slideUpFade 0.8s ease-out forwards;
-            }
-
-            .btn-animated:nth-child(1) {
-              animation-delay: 3s;
-            }
-            
-            .btn-animated:nth-child(2) {
-              animation-delay: 3.2s;
-            }
-            
-            .btn-animated:nth-child(3) {
-              animation-delay: 3.4s;
-            }
-            
-            @keyframes slideUpFade {
-              to {
-                transform: translateY(0);
-                opacity: 1;
-              }
-            }
-
-            .btn-animated:before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: -100%;
-              width: 100%;
-              height: 100%;
-              background: rgba(255, 255, 255, 0.2);
-              transition: all 0.5s ease;
-              z-index: -1;
-            }
-            
-            .btn-animated:hover {
-              transform: translateY(-3px) scale(1.05);
-              box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18);
-              color: #fff !important;
-              border-color: #fff !important;
-            }
-            
-            .btn-animated:hover:before {
-              left: 0;
-              background: rgba(255, 255, 255, 0.1);
-            }
-            
-            .btn-animated:active {
-              transform: translateY(-1px) scale(1.02);
-            }
-
-            /* Pulse effect for hero image */
-            .hero img {
-              animation: heroPulse 4s ease-in-out infinite;
-            }
-            
-            @keyframes heroPulse {
-              0%, 100% {
-                transform: scale(1);
-              }
-              50% {
-                transform: scale(1.02);
-              }
-            }
-
-            /* Glowing text effect */
-            #typed-text {
-              text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-              animation: textGlow 3s ease-in-out infinite alternate;
-            }
-            
-            @keyframes textGlow {
-              from {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-              }
-              to {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
-              }
-            }
-
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-              .shape {
-                display: none;
-              }
-              
-              .btn-animated {
-                margin: 5px;
-                display: block;
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-              }
-            }
-          </style>
-          <a href="services.html" class="btn-get-started btn-animated px-4 py-2 me-3" style="color: #fff; border-color: #fff;">Hire Us</a>
-          <a href="https://calendly.com/fatma-dyllun/discovery-call" class="btn-get-started btn-animated px-4 py-2 me-3" style="color: #fff; border-color: #fff;">Paid 1-1 Consultation</a>
-          <a href="contact.html" class="btn-get-started btn-animated px-4 py-2" style="color: #fff; border-color: #fff;">Results</a>
-        </div>
-        </div>
-    </div>
-  </div>
-
-</section><!-- /Hero Section -->
+    </section><!-- /Hero Section -->
 
   </main>
 

@@ -148,13 +148,18 @@
               document.addEventListener('DOMContentLoaded', typeWord);
             </script>
            
+         
             <p style="color: #fff;">Hello founder! 👋 <br>Glad you took the decision to grow your personal brand</p>
+          
             <div class="hero-buttons mt-4">
-              <a href="about.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">About Me</a>
-              <a href="services.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">Our Services</a>
-              <a href="portfolio.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff;">Portfolio</a>
-              <a href="contact.html" class="btn-book-now" style="color: #fff; background-color: rgba(255,255,255,0.2); border-color: #fff; padding: 12px 28px; font-size: 1.1rem; font-weight: bold; transition: all 0.3s ease;">Book Call</a>
+              <a href="about.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff; padding: 10px 24px; font-size: 1rem; min-width: 120px; text-align: center;">About Us</a>
+              <a href="services.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff; padding: 10px 24px; font-size: 1rem; min-width: 120px; text-align: center;">Services</a>
+              <a href="portfolio.html" class="btn-get-started me-2" style="color: #fff; border-color: #fff; padding: 10px 24px; font-size: 1rem; min-width: 120px; text-align: center;">Portfolio</a>
             </div>
+            
+            <!-- <div class="book-call-section mt-3">
+              <a href="contact.html" class="btn-book-now" style="color: #fff; background-color: rgba(255,255,255,0.2); border-color: #fff; padding: 10px 24px; font-size: 1rem; font-weight: bold; transition: all 0.3s ease; min-width: 120px; text-align: center;">Book Call</a>
+            </div> -->
 
             <style>
               .btn-book-now:hover {
@@ -164,7 +169,7 @@
               .btn-book-now:active {
                 transform: scale(0.95);
               }
-            </style></div>
+            </style>
             </div>
         </div>
       </div>
@@ -194,6 +199,7 @@
       </div>
     </div>
 
+  
   </footer>
 
   <!-- Scroll Top -->
@@ -201,6 +207,76 @@
 
   <!-- Preloader -->
   <div id="preloader"></div>
+
+  <!-- Book Call Button with Animation -->
+  <div class="floating-book-call">
+    <a href="contact.html" id="bookCallBtn" class="btn-book-call">
+      Book Call
+    </a>
+  </div>
+
+  <style>
+    .floating-book-call {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .btn-book-call {
+      background-color: #124c8a;
+      color: white;
+      padding: 12px 24px;
+      border: 2px solid white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-book-call:hover {
+      background-color: #0056b3;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+      text-decoration: none;
+    }
+
+    @keyframes clickPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+      }
+    }
+
+    .click-animation {
+      animation: clickPulse 0.6s ease-in-out;
+    }
+  </style>
+
+  <script>
+    // Add click animation every 5 seconds
+    setInterval(function() {
+      const bookCallBtn = document.getElementById('bookCallBtn');
+      bookCallBtn.classList.add('click-animation');
+      
+      // Remove animation class after animation completes
+      setTimeout(function() {
+        bookCallBtn.classList.remove('click-animation');
+      }, 600);
+    }, 5000);
+  </script>
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
